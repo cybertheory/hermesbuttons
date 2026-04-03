@@ -8,7 +8,7 @@ Use this skill when you need to:
 
 - Embed a one-click path from docs, landing pages, or internal tools into Hermes Agent
 - Offer both a **direct CLI prompt** and a **skill package URL** (zip / manifest) on the same page
-- Mirror patterns from `claudebuttons` but for Hermes branding (`#7C3AED`) and event names (`hb-*`)
+- Mirror patterns from `claudebuttons` but for Hermes Agent marketing palette (electric blue `#2B8CFF`, periwinkle alt) and event names (`hb-*`)
 - Improve discoverability for crawlers and other agents (hidden crawl links + optional `injectStructuredData()`)
 
 ## How to Add Buttons
@@ -46,7 +46,7 @@ Or add via CDN:
 
 ### Step 3: Customize
 
-**Themes:** `branded` (violet `#7C3AED`, default), `branded-alt` (teal `#14B8A6`), `dark`, `light`, `system`
+**Themes:** `branded` (blue `#2B8CFF`, default), `branded-alt` (periwinkle `#8FA3E8`), `dark`, `light`, `system`
 
 **Sizes:** `sm`, `md` (default), `lg`
 

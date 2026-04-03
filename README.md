@@ -5,9 +5,9 @@ Drop-in **"Run on Hermes"** and **"Run on Hermes Skills"** buttons for any websi
 **Hermes button** (`<hermes-button>`) copies a full CLI invocation using `hermes -p "..."` so users can paste into a terminal. **Hermes skill button** (`<hermes-skill-button>`) guides skill installation and ties into Hermes Agent workflows with persistent memory.
 
 <p align="center">
-  <img src="https://img.shields.io/npm/v/hermesbuttons?color=%237C3AED&label=npm" alt="npm version">
-  <img src="https://img.shields.io/bundlephobia/minzip/hermesbuttons?color=%237C3AED" alt="bundle size">
-  <img src="https://img.shields.io/npm/l/hermesbuttons?color=%237C3AED" alt="license">
+  <img src="https://img.shields.io/npm/v/hermesbuttons?color=%232B8CFF&label=npm" alt="npm version">
+  <img src="https://img.shields.io/bundlephobia/minzip/hermesbuttons?color=%232B8CFF" alt="bundle size">
+  <img src="https://img.shields.io/npm/l/hermesbuttons?color=%232B8CFF" alt="license">
 </p>
 
 ---
@@ -269,10 +269,10 @@ document.body.appendChild(btn);
 
 | Theme | Description |
 |-------|-------------|
-| `branded` | Violet primary (`#7C3AED`), white text **(default)** |
-| `branded-alt` | Teal primary (`#14B8A6`), white text — secondary accent |
-| `dark` | Dark surface, light text, violet accents |
-| `light` | Light surface, dark text, violet accents |
+| `branded` | Electric blue primary (`#2B8CFF`), white text **(default)** — [Hermes Agent](https://hermes-agent.nousresearch.com/) marketing palette |
+| `branded-alt` | Periwinkle (`#8FA3E8`), white text — pairs with `branded` |
+| `dark` | Navy-wash dark surface, light text, blue accents |
+| `light` | White / slate surfaces, blue accents |
 | `system` | Auto-switches between `light`/`dark` based on `prefers-color-scheme` |
 
 ## Sizes

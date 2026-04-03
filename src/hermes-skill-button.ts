@@ -1,6 +1,19 @@
 import type { HermesSkillButtonOptions, Theme, Size, Variant, Shape } from './types';
 import { HERMES_SKILL_ICON } from './icons';
-import { resolveTheme, themeToCSS, SIZE_MAP, SHAPE_MAP, BRAND_COLOR, BRAND_COLOR_HOVER, BRAND_COLOR_ACTIVE } from './themes';
+import {
+  resolveTheme,
+  themeToCSS,
+  SIZE_MAP,
+  SHAPE_MAP,
+  BRAND_COLOR,
+  BRAND_COLOR_HOVER,
+  BRAND_COLOR_ACTIVE,
+  BRAND_RGB,
+  ALT_BRAND_COLOR,
+  ALT_BRAND_COLOR_HOVER,
+  ALT_BRAND_COLOR_ACTIVE,
+  ALT_BRAND_RGB,
+} from './themes';
 import { showPopup } from './popup-dialog';
 
 const BUTTON_STYLES = `
@@ -49,18 +62,18 @@ const BUTTON_STYLES = `
   }
   :host([data-variant="filled"][data-theme="branded"]) .hb-btn:hover {
     background: ${BRAND_COLOR_HOVER};
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+    box-shadow: 0 2px 8px rgba(${BRAND_RGB}, 0.35);
   }
   :host([data-variant="filled"][data-theme="branded"]) .hb-btn:active {
     background: ${BRAND_COLOR_ACTIVE};
     transform: scale(0.98);
   }
   :host([data-variant="filled"][data-theme="branded-alt"]) .hb-btn:hover {
-    background: #0D9488;
-    box-shadow: 0 2px 8px rgba(20, 184, 166, 0.35);
+    background: ${ALT_BRAND_COLOR_HOVER};
+    box-shadow: 0 2px 8px rgba(${ALT_BRAND_RGB}, 0.35);
   }
   :host([data-variant="filled"][data-theme="branded-alt"]) .hb-btn:active {
-    background: #0F766E;
+    background: ${ALT_BRAND_COLOR_ACTIVE};
     transform: scale(0.98);
   }
 
@@ -68,12 +81,12 @@ const BUTTON_STYLES = `
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
   :host([data-variant="filled"][data-theme="dark"]) .hb-btn:hover {
-    background: #292524;
-    border-color: #57534E;
+    background: #1E2A42;
+    border-color: #475569;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
   :host([data-variant="filled"][data-theme="dark"]) .hb-btn:active {
-    background: #1C1917;
+    background: #141C2E;
     transform: scale(0.98);
   }
 
@@ -81,11 +94,11 @@ const BUTTON_STYLES = `
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
   }
   :host([data-variant="filled"][data-theme="light"]) .hb-btn:hover {
-    border-color: #D6D3D1;
+    border-color: #94A3B8;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
   :host([data-variant="filled"][data-theme="light"]) .hb-btn:active {
-    background: #FAFAF9;
+    background: #F8FAFC;
     transform: scale(0.98);
   }
 
@@ -97,53 +110,53 @@ const BUTTON_STYLES = `
     color: ${BRAND_COLOR};
   }
   :host([data-variant="outline"][data-theme="branded"]) .hb-btn:hover {
-    background: rgba(124, 58, 237, 0.08);
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.15);
+    background: rgba(${BRAND_RGB}, 0.08);
+    box-shadow: 0 2px 8px rgba(${BRAND_RGB}, 0.15);
   }
   :host([data-variant="outline"][data-theme="branded"]) .hb-btn:active {
-    background: rgba(124, 58, 237, 0.14);
+    background: rgba(${BRAND_RGB}, 0.14);
     transform: scale(0.98);
   }
 
   :host([data-variant="outline"][data-theme="branded-alt"]) .hb-btn {
     background: transparent;
-    border-color: #14B8A6;
-    color: #14B8A6;
+    border-color: ${ALT_BRAND_COLOR};
+    color: ${ALT_BRAND_COLOR};
   }
   :host([data-variant="outline"][data-theme="branded-alt"]) .hb-btn:hover {
-    background: rgba(20, 184, 166, 0.08);
-    box-shadow: 0 2px 8px rgba(20, 184, 166, 0.15);
+    background: rgba(${ALT_BRAND_RGB}, 0.08);
+    box-shadow: 0 2px 8px rgba(${ALT_BRAND_RGB}, 0.15);
   }
   :host([data-variant="outline"][data-theme="branded-alt"]) .hb-btn:active {
-    background: rgba(20, 184, 166, 0.14);
+    background: rgba(${ALT_BRAND_RGB}, 0.14);
     transform: scale(0.98);
   }
 
   :host([data-variant="outline"][data-theme="dark"]) .hb-btn {
     background: transparent;
-    border-color: #57534E;
-    color: #F5F0EB;
+    border-color: #475569;
+    color: #F1F5F9;
   }
   :host([data-variant="outline"][data-theme="dark"]) .hb-btn:hover {
     border-color: ${BRAND_COLOR};
-    background: rgba(124, 58, 237, 0.08);
+    background: rgba(${BRAND_RGB}, 0.08);
   }
   :host([data-variant="outline"][data-theme="dark"]) .hb-btn:active {
-    background: rgba(124, 58, 237, 0.14);
+    background: rgba(${BRAND_RGB}, 0.14);
     transform: scale(0.98);
   }
 
   :host([data-variant="outline"][data-theme="light"]) .hb-btn {
     background: transparent;
-    border-color: #D6D3D1;
-    color: #1C1917;
+    border-color: #CBD5E1;
+    color: #0F172A;
   }
   :host([data-variant="outline"][data-theme="light"]) .hb-btn:hover {
     border-color: ${BRAND_COLOR};
-    background: rgba(124, 58, 237, 0.05);
+    background: rgba(${BRAND_RGB}, 0.05);
   }
   :host([data-variant="outline"][data-theme="light"]) .hb-btn:active {
-    background: rgba(124, 58, 237, 0.1);
+    background: rgba(${BRAND_RGB}, 0.1);
     transform: scale(0.98);
   }
 
@@ -158,26 +171,26 @@ const BUTTON_STYLES = `
     color: ${BRAND_COLOR};
   }
   :host([data-variant="ghost"][data-theme="branded"]) .hb-btn:hover {
-    background: rgba(124, 58, 237, 0.1);
+    background: rgba(${BRAND_RGB}, 0.1);
   }
   :host([data-variant="ghost"][data-theme="branded"]) .hb-btn:active {
-    background: rgba(124, 58, 237, 0.16);
+    background: rgba(${BRAND_RGB}, 0.16);
     transform: scale(0.98);
   }
 
   :host([data-variant="ghost"][data-theme="branded-alt"]) .hb-btn {
-    color: #14B8A6;
+    color: ${ALT_BRAND_COLOR};
   }
   :host([data-variant="ghost"][data-theme="branded-alt"]) .hb-btn:hover {
-    background: rgba(20, 184, 166, 0.1);
+    background: rgba(${ALT_BRAND_RGB}, 0.1);
   }
   :host([data-variant="ghost"][data-theme="branded-alt"]) .hb-btn:active {
-    background: rgba(20, 184, 166, 0.16);
+    background: rgba(${ALT_BRAND_RGB}, 0.16);
     transform: scale(0.98);
   }
 
   :host([data-variant="ghost"][data-theme="dark"]) .hb-btn {
-    color: #F5F0EB;
+    color: #F1F5F9;
   }
   :host([data-variant="ghost"][data-theme="dark"]) .hb-btn:hover {
     background: rgba(255, 255, 255, 0.06);
@@ -188,7 +201,7 @@ const BUTTON_STYLES = `
   }
 
   :host([data-variant="ghost"][data-theme="light"]) .hb-btn {
-    color: #1C1917;
+    color: #0F172A;
   }
   :host([data-variant="ghost"][data-theme="light"]) .hb-btn:hover {
     background: rgba(0, 0, 0, 0.04);

@@ -1,10 +1,17 @@
 import type { ThemeTokens, Theme } from './types';
 
-export const BRAND_COLOR = '#7C3AED';
-export const BRAND_COLOR_HOVER = '#6D28D9';
-export const BRAND_COLOR_ACTIVE = '#5B21B6';
+/** Electric blue aligned with [Hermes Agent](https://hermes-agent.nousresearch.com/) marketing */
+export const BRAND_COLOR = '#2B8CFF';
+export const BRAND_COLOR_HOVER = '#1E7AEB';
+export const BRAND_COLOR_ACTIVE = '#186BD4';
+/** Comma-separated RGB for `rgba(..., α)` in component styles */
+export const BRAND_RGB = '43, 140, 255';
 
-export const ALT_BRAND_COLOR = '#14B8A6';
+/** Periwinkle secondary (Hermes hero title tone) */
+export const ALT_BRAND_COLOR = '#8FA3E8';
+export const ALT_BRAND_COLOR_HOVER = '#7B91DC';
+export const ALT_BRAND_COLOR_ACTIVE = '#6B82CC';
+export const ALT_BRAND_RGB = '143, 163, 232';
 
 export const themes: Record<Exclude<Theme, 'system'>, ThemeTokens> = {
   branded: {
@@ -12,48 +19,48 @@ export const themes: Record<Exclude<Theme, 'system'>, ThemeTokens> = {
     text: '#FFFFFF',
     border: 'transparent',
     surface: '#FFFFFF',
-    surfaceText: '#1A1025',
-    muted: '#7C7589',
+    surfaceText: '#0F172A',
+    muted: '#64748B',
     primary: BRAND_COLOR,
     primaryText: '#FFFFFF',
-    codeBg: '#1A1025',
-    codeText: '#F3EEFF',
+    codeBg: '#0F172A',
+    codeText: '#F1F5F9',
   },
   'branded-alt': {
     bg: ALT_BRAND_COLOR,
     text: '#FFFFFF',
     border: 'transparent',
     surface: '#FFFFFF',
-    surfaceText: '#1A1025',
-    muted: '#7C7589',
+    surfaceText: '#0F172A',
+    muted: '#64748B',
     primary: ALT_BRAND_COLOR,
     primaryText: '#FFFFFF',
-    codeBg: '#1A1025',
-    codeText: '#F3EEFF',
+    codeBg: '#0F172A',
+    codeText: '#F1F5F9',
   },
   dark: {
-    bg: '#1A1025',
-    text: '#F3EEFF',
-    border: '#2D2440',
-    surface: '#231A35',
-    surfaceText: '#F3EEFF',
-    muted: '#9F95B0',
+    bg: '#141C2E',
+    text: '#F1F5F9',
+    border: '#2A3F5C',
+    surface: '#1A2740',
+    surfaceText: '#F1F5F9',
+    muted: '#94A3B8',
     primary: BRAND_COLOR,
     primaryText: '#FFFFFF',
-    codeBg: '#0F0A18',
-    codeText: '#F3EEFF',
+    codeBg: '#0A0E18',
+    codeText: '#F1F5F9',
   },
   light: {
     bg: '#FFFFFF',
-    text: '#1A1025',
-    border: '#E8E0F0',
-    surface: '#FAF8FF',
-    surfaceText: '#1A1025',
-    muted: '#7C7589',
+    text: '#0F172A',
+    border: '#CBD5E1',
+    surface: '#F8FAFC',
+    surfaceText: '#0F172A',
+    muted: '#64748B',
     primary: BRAND_COLOR,
     primaryText: '#FFFFFF',
-    codeBg: '#1A1025',
-    codeText: '#F3EEFF',
+    codeBg: '#0F172A',
+    codeText: '#F1F5F9',
   },
 };
 

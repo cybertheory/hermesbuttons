@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hermesbuttons — Demo</title>
+  <title>hermesbuttons — Demo · Hermes Agent palette</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --violet: #7C3AED;
-      --violet-glow: rgba(124, 58, 237, 0.18);
-      --teal: #14B8A6;
-      --teal-glow: rgba(20, 184, 166, 0.15);
-      --dark-1: #0F0A18;
-      --dark-2: #1A1228;
-      --dark-3: #251D36;
-      --dark-border: #3D3554;
-      --light-1: #FAF8FF;
-      --light-border: #E9E4F5;
-      --muted: #A89BC4;
-      --muted-2: #7C6B9A;
+      --accent: #2B8CFF;
+      --accent-glow: rgba(43, 140, 255, 0.2);
+      --secondary: #8FA3E8;
+      --secondary-glow: rgba(143, 163, 232, 0.14);
+      --dark-1: #0A0E18;
+      --dark-2: #111A28;
+      --dark-3: #1A2740;
+      --dark-border: #2A3F5C;
+      --light-1: #F8FAFC;
+      --light-border: #CBD5E1;
+      --muted: #94A3B8;
+      --muted-2: #64748B;
     }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--dark-1);
-      color: #F4F0FF;
+      color: #F1F5F9;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
@@ -44,22 +44,22 @@
       top: -120px; left: 50%;
       transform: translateX(-50%);
       width: 640px; height: 420px;
-      background: radial-gradient(ellipse, var(--violet-glow) 0%, transparent 70%);
+      background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-pill {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 5px 14px;
-      background: rgba(124, 58, 237, 0.12);
-      border: 1px solid rgba(124, 58, 237, 0.28);
+      background: rgba(43, 140, 255, 0.08);
+      border: 1px solid rgba(43, 140, 255, 0.22);
       border-radius: 100px;
-      font-size: 12px; font-weight: 600; color: var(--violet);
+      font-size: 12px; font-weight: 600; color: #7CB8FF;
       letter-spacing: 0.04em; text-transform: uppercase;
       margin-bottom: 24px;
     }
     .hero-pill .dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: var(--violet);
+      background: var(--accent);
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
@@ -68,7 +68,7 @@
       letter-spacing: -0.04em; line-height: 1.1;
       margin-bottom: 16px; position: relative;
     }
-    .hero h1 .accent { color: var(--violet); }
+    .hero h1 .accent { color: var(--accent); }
     .hero .subtitle {
       font-size: 17px; color: var(--muted);
       max-width: 560px; margin: 0 auto; line-height: 1.6;
@@ -98,7 +98,7 @@
       user-select: all;
       white-space: nowrap;
     }
-    .hero-install-text span { color: #F4F0FF; }
+    .hero-install-text span { color: #F1F5F9; }
     .hero-install-copy {
       display: flex;
       align-items: center;
@@ -113,7 +113,7 @@
       transition: background 0.15s, color 0.15s;
       flex-shrink: 0;
     }
-    .hero-install-copy:hover { background: var(--dark-3); color: #F4F0FF; }
+    .hero-install-copy:hover { background: var(--dark-3); color: #F1F5F9; }
     .hero-install-copy svg { width: 15px; height: 15px; }
 
     .hero-notice {
@@ -124,8 +124,8 @@
       max-width: 560px;
       margin: 28px auto 0;
       padding: 14px 18px;
-      background: rgba(124, 58, 237, 0.08);
-      border: 1px solid rgba(124, 58, 237, 0.22);
+      background: rgba(43, 140, 255, 0.06);
+      border: 1px solid rgba(43, 140, 255, 0.18);
       border-radius: 12px;
       text-align: left;
       font-size: 13px;
@@ -137,10 +137,10 @@
       width: 18px;
       height: 18px;
       margin-top: 1px;
-      color: var(--violet);
-      opacity: 0.9;
+      color: var(--accent);
+      opacity: 0.85;
     }
-    .hero-notice strong { color: #F4F0FF; font-weight: 600; }
+    .hero-notice strong { color: #F1F5F9; font-weight: 600; }
     .hero-notice code {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11.5px;
@@ -148,7 +148,7 @@
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 4px;
-      color: var(--violet);
+      color: var(--accent);
     }
 
     .container { max-width: 1040px; margin: 0 auto; padding: 0 24px 96px; }
@@ -158,10 +158,10 @@
     .section-tag {
       font-size: 11px; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--violet); background: var(--violet-glow);
+      color: var(--accent); background: rgba(43, 140, 255, 0.1);
       padding: 3px 10px; border-radius: 4px;
     }
-    .section-tag--alt { color: var(--teal); background: var(--teal-glow); }
+    .section-tag--alt { color: var(--secondary); background: var(--secondary-glow); }
     .section-title { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
     .section-desc { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
 
@@ -195,13 +195,13 @@
     .log-header-title { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: var(--muted); }
     .log-header-title .dot-green { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; margin-right: 8px; vertical-align: middle; }
     .log-clear { padding: 4px 12px; background: transparent; border: 1px solid var(--dark-border); color: var(--muted); border-radius: 6px; font-family: inherit; font-size: 12px; cursor: pointer; transition: all 0.15s; }
-    .log-clear:hover { border-color: var(--muted); color: #F4F0FF; }
+    .log-clear:hover { border-color: var(--muted); color: #F1F5F9; }
     .log-body { padding: 16px 20px; max-height: 200px; overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.8; scrollbar-width: thin; scrollbar-color: var(--dark-border) transparent; }
     .log-empty { color: var(--muted); font-style: italic; }
     .log-entry { display: flex; gap: 10px; }
     .log-time { color: var(--muted); flex-shrink: 0; }
-    .log-event { color: var(--violet); font-weight: 500; flex-shrink: 0; }
-    .log-detail { color: #F4F0FF; word-break: break-all; }
+    .log-event { color: var(--accent); font-weight: 500; flex-shrink: 0; }
+    .log-detail { color: #F1F5F9; word-break: break-all; }
 
     .code-section { margin-top: 64px; }
     .code-tabs { display: flex; gap: 2px; margin-bottom: -1px; position: relative; z-index: 1; }
@@ -212,24 +212,24 @@
       font-size: 12px; cursor: pointer;
       border-radius: 8px 8px 0 0; transition: all 0.15s;
     }
-    .code-tab[data-active="true"] { background: var(--dark-2); border-color: var(--dark-border); color: #F4F0FF; }
-    .code-tab:hover:not([data-active="true"]) { color: #F4F0FF; }
+    .code-tab[data-active="true"] { background: var(--dark-2); border-color: var(--dark-border); color: #F1F5F9; }
+    .code-tab:hover:not([data-active="true"]) { color: #F1F5F9; }
     .code-block {
       background: var(--dark-2); border: 1px solid var(--dark-border);
       border-radius: 0 14px 14px 14px; padding: 20px 24px;
       font-family: 'JetBrains Mono', monospace; font-size: 13px;
       line-height: 1.7; overflow-x: auto; white-space: pre;
-      color: #F4F0FF; display: none;
+      color: #F1F5F9; display: none;
     }
     .code-block[data-active="true"] { display: block; }
-    .code-block .kw { color: var(--violet); }
-    .code-block .str { color: #A89BC4; }
-    .code-block .cmt { color: #5B5270; }
-    .code-block .tag { color: #8B7EAA; }
-    .code-block .fn { color: #5EEAD4; }
+    .code-block .kw { color: var(--accent); }
+    .code-block .str { color: #94A3B8; }
+    .code-block .cmt { color: #475569; }
+    .code-block .tag { color: #64748B; }
+    .code-block .fn { color: #7DD3FC; }
 
     .footer { text-align: center; padding: 48px 24px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--dark-border); }
-    .footer a { color: var(--violet); text-decoration: none; }
+    .footer a { color: var(--accent); text-decoration: none; }
     .footer a:hover { text-decoration: underline; }
   </style>
 </head>
@@ -240,11 +240,11 @@
 
   <!-- ═══ HERO ═══ -->
   <header class="hero">
-    <div class="hero-pill"><span class="dot"></span> v1.0.0</div>
-    <h1><span class="accent">hermes</span>buttons</h1>
+    <div class="hero-pill"><span class="dot"></span> Open Source · MIT License</div>
+    <h1>hermes<span class="accent">buttons</span></h1>
     <p class="subtitle">
-      Drop-in &ldquo;Run on Hermes&rdquo; and &ldquo;Run on Hermes Skills&rdquo; buttons for any website.
-      Framework-agnostic Web Components for Hermes Agent &mdash; self-improving AI with persistent memory.
+      Drop-in &ldquo;Run on Hermes&rdquo; and &ldquo;Run on Hermes Skills&rdquo; for any site.
+      Palette matches <a href="https://hermes-agent.nousresearch.com/" style="color:var(--secondary);text-decoration:none;font-weight:600;">Hermes Agent</a> by Nous Research &mdash; navy field, electric blue, periwinkle secondary.
     </p>
     <div class="hero-install">
       <div class="hero-install-text">$ <span>npm i hermesbuttons</span></div>
@@ -272,7 +272,7 @@
         <span class="section-tag">Variant</span>
         <h2 class="section-title">Filled / Outline / Ghost</h2>
       </div>
-      <p class="section-desc">Three visual variants per button. Use <code style="color:var(--violet)">variant="outline"</code> or <code style="color:var(--violet)">variant="ghost"</code> for secondary actions or side-by-side differentiation.</p>
+      <p class="section-desc">Three visual variants per button. Use <code style="color:var(--accent)">variant="outline"</code> or <code style="color:var(--accent)">variant="ghost"</code> for secondary actions or side-by-side differentiation.</p>
       <div class="grid">
         <div class="card">
           <div class="card-label">Hermes (CLI)</div>
@@ -313,7 +313,7 @@
         <span class="section-tag">Shape</span>
         <h2 class="section-title">Rounded / Pill / Square</h2>
       </div>
-      <p class="section-desc">Control the border radius with <code style="color:var(--violet)">shape="pill"</code> or <code style="color:var(--violet)">shape="square"</code>. Default is <code style="color:var(--violet)">rounded</code>.</p>
+      <p class="section-desc">Control the border radius with <code style="color:var(--accent)">shape="pill"</code> or <code style="color:var(--accent)">shape="square"</code>. Default is <code style="color:var(--accent)">rounded</code>.</p>
       <div class="grid">
         <div class="card">
           <div class="card-label">Hermes</div>
@@ -398,9 +398,9 @@
     <section class="section">
       <div class="section-header">
         <span class="section-tag">Theme</span>
-        <h2 class="section-title">Branded (purple)</h2>
+        <h2 class="section-title">Branded (blue)</h2>
       </div>
-      <p class="section-desc">The default theme &mdash; violet primary (<code style="color:var(--violet)">#7C3AED</code>) matching Hermesbuttons brand.</p>
+      <p class="section-desc">Default <code style="color:var(--accent)">branded</code> fill &mdash; electric blue (<code style="color:var(--accent)">#2B8CFF</code>), aligned with the <a href="https://hermes-agent.nousresearch.com/" style="color:var(--secondary);">Hermes Agent</a> site.</p>
       <div class="grid">
         <div class="card">
           <div class="card-label">Hermes &mdash; sizes</div>
@@ -439,9 +439,9 @@
     <section class="section">
       <div class="section-header">
         <span class="section-tag section-tag--alt">Theme</span>
-        <h2 class="section-title">Branded Alt (teal)</h2>
+        <h2 class="section-title">Branded Alt (periwinkle)</h2>
       </div>
-      <p class="section-desc">Secondary accent in teal (<code style="color:var(--teal)">#14B8A6</code>) &mdash; pairs well with the default purple for two-button layouts.</p>
+      <p class="section-desc">Secondary <code style="color:var(--accent)">branded-alt</code> &mdash; periwinkle (<code style="color:var(--secondary)">#8FA3E8</code>) for pairing with the primary blue.</p>
       <div class="grid">
         <div class="card">
           <div class="card-label">Filled</div>
@@ -490,7 +490,7 @@
         <span class="section-tag">Theme</span>
         <h2 class="section-title">Dark</h2>
       </div>
-      <p class="section-desc">For dark UIs &mdash; dark surface with purple accents.</p>
+      <p class="section-desc">For dark UIs &mdash; navy-wash surfaces with electric-blue accents.</p>
       <div class="grid">
         <div class="card">
           <div class="card-label">Variants</div>
@@ -519,7 +519,7 @@
         <span class="section-tag">Theme</span>
         <h2 class="section-title">Light</h2>
       </div>
-      <p class="section-desc">For light UIs &mdash; soft surface with purple accents.</p>
+      <p class="section-desc">For light UIs &mdash; cool gray borders with electric-blue primary.</p>
       <div class="grid">
         <div class="card card--light">
           <div class="card-label">Variants</div>
@@ -551,7 +551,7 @@
       <p class="section-desc">Automatically switches between light and dark based on your OS preference.</p>
       <div class="grid">
         <div class="card">
-          <div class="card-label">Auto-detects <code style="color:var(--violet)">prefers-color-scheme</code></div>
+          <div class="card-label">Auto-detects <code style="color:var(--accent)">prefers-color-scheme</code></div>
           <div class="card-row">
             <hermes-button command="/competitive-analysis refresh Q2 positioning" theme="system"></hermes-button>
             <hermes-skill-button command="/sprint-retrospective" skill-url="https://example.com/skills/sprint-retro.zip" theme="system"></hermes-skill-button>
@@ -570,7 +570,7 @@
         <span class="section-tag">API</span>
         <h2 class="section-title">Programmatic</h2>
       </div>
-      <p class="section-desc">Buttons created via <code style="color:var(--violet)">HermesButtons.createHermesButton()</code> and <code style="color:var(--violet)">HermesButtons.createHermesSkillButton()</code>.</p>
+      <p class="section-desc">Buttons created via <code style="color:var(--accent)">HermesButtons.createHermesButton()</code> and <code style="color:var(--accent)">HermesButtons.createHermesSkillButton()</code>.</p>
       <div class="grid">
         <div class="card">
           <div class="card-label">Created via JavaScript</div>
@@ -585,7 +585,7 @@
         <span class="section-tag">Events</span>
         <h2 class="section-title">Live Event Log</h2>
       </div>
-      <p class="section-desc">Click any button above &mdash; <code style="color:var(--violet)">hb-copy</code>, <code style="color:var(--violet)">hb-open</code>, <code style="color:var(--violet)">hb-close</code>, and <code style="color:var(--violet)">hb-download</code> bubble to <code style="color:var(--violet)">document</code> and are logged here.</p>
+      <p class="section-desc">Click any button above &mdash; <code style="color:var(--accent)">hb-copy</code>, <code style="color:var(--accent)">hb-open</code>, <code style="color:var(--accent)">hb-close</code>, and <code style="color:var(--accent)">hb-download</code> bubble to <code style="color:var(--accent)">document</code> and are logged here.</p>
       <div class="log-panel">
         <div class="log-header">
           <span class="log-header-title"><span class="dot-green"></span>Event listener</span>
@@ -690,7 +690,7 @@ app.<span class="fn">mount</span>(<span class="str">'#app'</span>);
   </div>
 
   <footer class="footer">
-    <a href="https://github.com/cybertheory/hermesbuttons">hermesbuttons</a> &mdash; MIT License
+    <a href="https://github.com/cybertheory/hermesbuttons">hermesbuttons</a> &mdash; MIT &middot; <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a>
   </footer>
 
   <script>
