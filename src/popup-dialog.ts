@@ -328,7 +328,7 @@ export class HermesPopupDialog extends HTMLElement {
   private render() {
     if (!this.shadowRoot || !this._options) return;
 
-    const { variant, title, description, command, fullCommand, skillUrl } = this._options;
+    const { variant, title, description, command, fullCommand } = this._options;
     const tokens = this.resolvePopupTokens();
     const icon = variant === 'hermes' ? HERMES_ICON : HERMES_SKILL_ICON;
 
@@ -349,7 +349,7 @@ export class HermesPopupDialog extends HTMLElement {
             <button class="hb-dialog-close" data-action="close" aria-label="Close">${CLOSE_ICON}</button>
           </div>
           <div class="hb-dialog-body">
-            ${isHermesTerminal ? this.renderHermesTerminalBody(displayCommand) : this.renderHermesSkillBody(command, skillUrl)}
+            ${isHermesTerminal ? this.renderHermesTerminalBody(displayCommand) : this.renderHermesSkillBody(command)}
           </div>
           <div class="hb-dialog-footer">
             ${isHermesTerminal ? `
@@ -387,51 +387,25 @@ export class HermesPopupDialog extends HTMLElement {
     `;
   }
 
-  private renderHermesSkillBody(command: string, skillUrl?: string): string {
-    let steps = '';
-
-    if (skillUrl) {
-      const fullPrompt = `Install the skill from ${skillUrl} and run ${command}`;
-      steps += `
-        <div class="hb-step">
-          <div class="hb-step-num">1</div>
-          <div class="hb-step-content">
-            <div class="hb-step-label">Copy this prompt to your clipboard</div>
-            <div class="hb-code-block">
-              <div class="hb-code-text">${this.escapeHtml(fullPrompt)}</div>
-              <button class="hb-copy-btn" data-action="copy" data-command="${this.escapeAttr(fullPrompt)}">${COPY_ICON}<span>Copy</span></button>
-            </div>
+  private renderHermesSkillBody(command: string): string {
+    return `
+      <div class="hb-step">
+        <div class="hb-step-num">1</div>
+        <div class="hb-step-content">
+          <div class="hb-step-label">Copy this command to your clipboard</div>
+          <div class="hb-code-block">
+            <div class="hb-code-text">${this.escapeHtml(command)}</div>
+            <button class="hb-copy-btn" data-action="copy" data-command="${this.escapeAttr(command)}">${COPY_ICON}<span>Copy</span></button>
           </div>
         </div>
-        <div class="hb-step">
-          <div class="hb-step-num">2</div>
-          <div class="hb-step-content">
-            <div class="hb-step-label">Paste into a Hermes session — the agent will fetch the skill and set it up for you</div>
-          </div>
+      </div>
+      <div class="hb-step">
+        <div class="hb-step-num">2</div>
+        <div class="hb-step-content">
+          <div class="hb-step-label">Paste and send in your Hermes session</div>
         </div>
-      `;
-    } else {
-      steps += `
-        <div class="hb-step">
-          <div class="hb-step-num">1</div>
-          <div class="hb-step-content">
-            <div class="hb-step-label">Copy this command to your clipboard</div>
-            <div class="hb-code-block">
-              <div class="hb-code-text">${this.escapeHtml(command)}</div>
-              <button class="hb-copy-btn" data-action="copy" data-command="${this.escapeAttr(command)}">${COPY_ICON}<span>Copy</span></button>
-            </div>
-          </div>
-        </div>
-        <div class="hb-step">
-          <div class="hb-step-num">2</div>
-          <div class="hb-step-content">
-            <div class="hb-step-label">Paste and send in your Hermes session</div>
-          </div>
-        </div>
-      `;
-    }
-
-    return steps;
+      </div>
+    `;
   }
 
   private setupListeners() {

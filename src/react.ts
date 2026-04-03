@@ -23,7 +23,6 @@ export interface HermesSkillButtonProps extends HermesSkillButtonOptions {
   className?: string;
   style?: React.CSSProperties;
   onHbCopy?: (e: CustomEvent<{ command: string }>) => void;
-  onHbDownload?: (e: CustomEvent<{ url: string }>) => void;
   onHbOpen?: (e: CustomEvent<{ command: string }>) => void;
   onHbClose?: (e: CustomEvent) => void;
 }
@@ -109,20 +108,17 @@ export const HermesButton: FC<HermesButtonProps> = ({
 
 export const HermesSkillButton: FC<HermesSkillButtonProps> = ({
   command,
-  skillUrl,
   theme = 'branded',
   size = 'md',
   variant = 'filled',
   shape = 'rounded',
   popup = true,
   onCopy,
-  onDownload,
   popupTitle,
   popupDescription,
   className,
   style,
   onHbCopy,
-  onHbDownload,
   onHbOpen,
   onHbClose,
 }) => {
@@ -131,8 +127,6 @@ export const HermesSkillButton: FC<HermesSkillButtonProps> = ({
 
   const hbCopyRef = useRef(onHbCopy);
   hbCopyRef.current = onHbCopy;
-  const hbDownloadRef = useRef(onHbDownload);
-  hbDownloadRef.current = onHbDownload;
   const hbOpenRef = useRef(onHbOpen);
   hbOpenRef.current = onHbOpen;
   const hbCloseRef = useRef(onHbClose);
@@ -148,7 +142,6 @@ export const HermesSkillButton: FC<HermesSkillButtonProps> = ({
       elRef.current = el;
 
       el.addEventListener('hb-copy', ((e: Event) => hbCopyRef.current?.(e as CustomEvent)) as EventListener);
-      el.addEventListener('hb-download', ((e: Event) => hbDownloadRef.current?.(e as CustomEvent)) as EventListener);
       el.addEventListener('hb-open', ((e: Event) => hbOpenRef.current?.(e as CustomEvent)) as EventListener);
       el.addEventListener('hb-close', ((e: Event) => hbCloseRef.current?.(e as CustomEvent)) as EventListener);
 
@@ -171,18 +164,16 @@ export const HermesSkillButton: FC<HermesSkillButtonProps> = ({
 
     (el as any).options = {
       command,
-      skillUrl,
       theme,
       size,
       variant,
       shape,
       popup,
       onCopy,
-      onDownload,
       popupTitle,
       popupDescription,
     };
-  }, [command, skillUrl, theme, size, variant, shape, popup, onCopy, onDownload, popupTitle, popupDescription]);
+  }, [command, theme, size, variant, shape, popup, onCopy, popupTitle, popupDescription]);
 
   return createElement('div', {
     ref: containerRef,

@@ -16,7 +16,6 @@ interface HermesButtonAttributes {
 
 interface HermesSkillButtonAttributes {
   command?: string;
-  'skill-url'?: string;
   theme?: Theme;
   size?: Size;
   variant?: Variant;

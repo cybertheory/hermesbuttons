@@ -9,7 +9,6 @@ export interface ButtonMetadata {
   platform: 'hermes' | 'hermes-skill';
   command: string;
   fullCommand?: string;
-  skillUrl?: string;
 }
 
 export function discoverButtons(): ButtonMetadata[] {
@@ -32,12 +31,10 @@ export function discoverButtons(): ButtonMetadata[] {
 
   document.querySelectorAll('hermes-skill-button').forEach((el) => {
     const command = el.getAttribute('command') || '';
-    const skillUrl = el.getAttribute('skill-url') || undefined;
 
     results.push({
       platform: 'hermes-skill',
       command,
-      ...(skillUrl && { skillUrl }),
     });
   });
 
@@ -70,31 +67,15 @@ export function generateStructuredData(): object {
     const entry: Record<string, unknown> = {
       '@type': 'EntryPoint',
       actionPlatform: 'https://hermes.ai/skills',
+      urlTemplate: `https://hermes.ai/skills?command=${encodeURIComponent(btn.command)}`,
     };
-    if (btn.skillUrl) {
-      entry.urlTemplate = btn.skillUrl;
-    } else {
-      entry.urlTemplate = `https://hermes.ai/skills?command=${encodeURIComponent(btn.command)}`;
-    }
 
-    const action: Record<string, unknown> = {
+    return {
       '@type': 'Action',
       name: `Run on Hermes Skills: ${btn.command}`,
       description: btn.command,
       target: entry,
     };
-
-    if (btn.skillUrl) {
-      action.object = {
-        '@type': 'SoftwareApplication',
-        name: btn.command,
-        downloadUrl: btn.skillUrl,
-        applicationCategory: 'AI Skill',
-        operatingSystem: 'Hermes Agent',
-      };
-    }
-
-    return action;
   });
 
   return {

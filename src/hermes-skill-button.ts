@@ -257,7 +257,7 @@ const BUTTON_STYLES = `
 `;
 
 export class HermesSkillButton extends HTMLElement {
-  static observedAttributes = ['command', 'skill-url', 'theme', 'size', 'variant', 'shape', 'popup', 'popup-title', 'popup-description'];
+  static observedAttributes = ['command', 'theme', 'size', 'variant', 'shape', 'popup', 'popup-title', 'popup-description'];
 
   private _options: HermesSkillButtonOptions = {
     command: '',
@@ -305,7 +305,6 @@ export class HermesSkillButton extends HTMLElement {
 
   private syncFromAttributes() {
     const command = this.getAttribute('command');
-    const skillUrl = this.getAttribute('skill-url');
     const theme = this.getAttribute('theme') as Theme | null;
     const size = this.getAttribute('size') as Size | null;
     const variant = this.getAttribute('variant') as Variant | null;
@@ -315,7 +314,6 @@ export class HermesSkillButton extends HTMLElement {
     const popupDescription = this.getAttribute('popup-description');
 
     if (command !== null) this._options.command = command;
-    if (skillUrl !== null) this._options.skillUrl = skillUrl;
     if (theme) this._options.theme = theme;
     if (size) this._options.size = size;
     if (variant) this._options.variant = variant;
@@ -326,7 +324,7 @@ export class HermesSkillButton extends HTMLElement {
   }
 
   private updateLightDOM() {
-    const { command, skillUrl } = this._options;
+    const { command } = this._options;
 
     this.setAttribute('role', 'button');
     this.setAttribute('tabindex', '0');
@@ -348,13 +346,7 @@ export class HermesSkillButton extends HTMLElement {
     link.textContent = `Run on Hermes Skills: ${command}`;
     link.setAttribute('data-platform', 'hermes-skill');
     link.setAttribute('data-command', command);
-    if (skillUrl) {
-      link.href = skillUrl;
-      link.setAttribute('data-skill-url', skillUrl);
-    } else {
-      link.href = `https://hermes.ai/skills?command=${encodeURIComponent(command)}`;
-      link.removeAttribute('data-skill-url');
-    }
+    link.href = `https://hermes.ai/skills?command=${encodeURIComponent(command)}`;
   }
 
   private getResolvedTheme(): Theme {
@@ -423,7 +415,7 @@ export class HermesSkillButton extends HTMLElement {
   }
 
   private handleClick() {
-    const { popup, command, skillUrl, popupTitle, popupDescription } = this._options;
+    const { popup, command, popupTitle, popupDescription } = this._options;
 
     this.dispatchEvent(new CustomEvent('hb-open', {
       bubbles: true,
@@ -450,7 +442,6 @@ export class HermesSkillButton extends HTMLElement {
       title: popupTitle || 'Run on Hermes Skills',
       description: popupDescription || 'Copy and paste into a Hermes session to get started.',
       command,
-      skillUrl,
       onCopy: (cmd) => {
         this._options.onCopy?.(cmd);
         recordAgentPreference('hermes-skill');
