@@ -1,4 +1,5 @@
 import type { HermesSkillButtonOptions, Theme, Size, Variant, Shape } from './types';
+import { recordAgentPreference } from './agent-preferences';
 import { HERMES_SKILL_ICON } from './icons';
 import {
   resolveTheme,
@@ -433,6 +434,7 @@ export class HermesSkillButton extends HTMLElement {
     if (popup === false) {
       navigator.clipboard.writeText(command).then(() => {
         this._options.onCopy?.(command);
+        recordAgentPreference('hermes-skill');
         this.dispatchEvent(new CustomEvent('hb-copy', {
           bubbles: true,
           composed: true,
@@ -451,6 +453,7 @@ export class HermesSkillButton extends HTMLElement {
       skillUrl,
       onCopy: (cmd) => {
         this._options.onCopy?.(cmd);
+        recordAgentPreference('hermes-skill');
         this.dispatchEvent(new CustomEvent('hb-copy', {
           bubbles: true,
           composed: true,

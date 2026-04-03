@@ -1,4 +1,5 @@
 import type { HermesButtonOptions, Theme, Size, Variant, Shape } from './types';
+import { recordAgentPreference } from './agent-preferences';
 import { HERMES_ICON } from './icons';
 import {
   resolveTheme,
@@ -437,6 +438,7 @@ export class HermesButton extends HTMLElement {
     if (popup === false) {
       navigator.clipboard.writeText(fullCommand).then(() => {
         this._options.onCopy?.(fullCommand);
+        recordAgentPreference('hermes');
         this.dispatchEvent(new CustomEvent('hb-copy', {
           bubbles: true,
           composed: true,
@@ -455,6 +457,7 @@ export class HermesButton extends HTMLElement {
       fullCommand,
       onCopy: (cmd: string) => {
         this._options.onCopy?.(cmd);
+        recordAgentPreference('hermes');
         this.dispatchEvent(new CustomEvent('hb-copy', {
           bubbles: true,
           composed: true,
