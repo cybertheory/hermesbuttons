@@ -23,4 +23,6 @@ export function register() {
   registerHermesSkillButton();
 }
 
+import './beacon';
+
 export type {} from './jsx.d';
